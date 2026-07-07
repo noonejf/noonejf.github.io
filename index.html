@@ -57,7 +57,33 @@ nav a:hover{color:var(--acc);text-decoration:none}
   -webkit-mask-image:linear-gradient(to bottom, black 65%, transparent);
   mask-image:linear-gradient(to bottom, black 65%, transparent);
 }
-.hero{padding:96px 0 72px;max-width:720px;position:relative}
+.hero{padding:96px 0 72px;position:relative;display:grid;grid-template-columns:1fr;gap:48px;align-items:center}
+.hero-text{max-width:720px}
+.hero-fig{display:none}
+@media(min-width:960px){
+  .hero{grid-template-columns:1.35fr 1fr}
+  .hero-fig{display:block;justify-self:center}
+}
+
+/* ===== Tortuga-radar: se arma y carga stats ===== */
+.tstat{width:min(320px,100%);height:auto;overflow:visible}
+.tstat .draw{stroke-dasharray:600;stroke-dashoffset:0;animation:tdraw 1s ease-out both}
+.tstat .draw.d-in{animation-delay:.85s;animation-duration:.7s}
+@keyframes tdraw{from{stroke-dashoffset:600}}
+.tstat .part{transform-box:fill-box;transform-origin:center;animation:tpop .4s cubic-bezier(.34,1.56,.64,1) both}
+@keyframes tpop{from{transform:scale(0)}}
+.tstat .radar{
+  transform-box:fill-box;transform-origin:center;
+  animation:tgrow .8s cubic-bezier(.2,.7,.3,1) 2.15s both, tbreath 4s ease-in-out 3s infinite alternate;
+}
+@keyframes tgrow{from{transform:scale(0);opacity:0}}
+@keyframes tbreath{from{opacity:1}to{opacity:.72}}
+.tstat .dot{transform-box:fill-box;transform-origin:center;animation:tpop .35s cubic-bezier(.34,1.56,.64,1) both}
+.tstat-float{animation:tfloat 7s ease-in-out infinite alternate}
+@keyframes tfloat{from{transform:translateY(-5px)}to{transform:translateY(7px)}}
+@media (prefers-reduced-motion: reduce){
+  .tstat .draw,.tstat .part,.tstat .radar,.tstat .dot,.tstat-float{animation:none}
+}
 .kicker{
   color:var(--acc);font-size:13px;font-weight:600;letter-spacing:.14em;
   text-transform:uppercase;margin-bottom:18px;font-family:var(--disp);
@@ -216,19 +242,45 @@ footer{border-top:1px solid var(--line);padding:60px 0 48px}
 <main class="wrap">
 
   <div class="hero">
-    <div class="kicker rv d1" data-i18n="hero_tag">Ingeniero Mecatrónico · PUCP · Lima, Perú</div>
-    <h1 class="rv d2" data-i18n="hero_h1">José Fabián <em>Sifuentes</em></h1>
-    <p class="sub rv d3" data-i18n="hero_sub">
-      Ingeniero mecatrónico. Electrónica, firmware y software — de prototipo a
-      producción: robótica industrial, misiones satelitales y plataformas web.
-    </p>
-    <div class="hero-cta rv d4">
-      <a class="btn btn-solid" href="#proyectos" data-i18n="hero_cta1">Ver proyectos</a>
-      <a class="btn btn-ghost" href="https://github.com/noonejf" target="_blank" rel="noopener">GitHub <svg aria-hidden="true"><use href="#i-out"/></svg></a>
+    <div class="hero-text">
+      <div class="kicker rv d1" data-i18n="hero_tag">Ingeniero Mecatrónico · PUCP · Lima, Perú</div>
+      <h1 class="rv d2" data-i18n="hero_h1">José Fabián <em>Sifuentes</em></h1>
+      <p class="sub rv d3" data-i18n="hero_sub">
+        Ingeniero mecatrónico. Electrónica, firmware y software — de prototipo a
+        producción: robótica industrial, misiones satelitales y plataformas web.
+      </p>
+      <div class="hero-cta rv d4">
+        <a class="btn btn-solid" href="#proyectos" data-i18n="hero_cta1">Ver proyectos</a>
+        <a class="btn btn-ghost" href="https://github.com/noonejf" target="_blank" rel="noopener">GitHub <svg aria-hidden="true"><use href="#i-out"/></svg></a>
+      </div>
+      <svg class="trace rv d4" viewBox="0 0 560 40" aria-hidden="true" preserveAspectRatio="none">
+        <path d="M0 20 H140 L152 20 158 6 166 34 174 12 180 20 H320 L332 20 338 8 346 32 352 20 H560"/>
+      </svg>
     </div>
-    <svg class="trace rv d4" viewBox="0 0 560 40" aria-hidden="true" preserveAspectRatio="none">
-      <path d="M0 20 H140 L152 20 158 6 166 34 174 12 180 20 H320 L332 20 338 8 346 32 352 20 H560"/>
-    </svg>
+    <div class="hero-fig tstat-float" aria-hidden="true">
+      <svg class="tstat" viewBox="0 0 240 250" fill="none" stroke="#4ADE80" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round">
+        <!-- caparazon: se dibuja solo -->
+        <path class="draw" d="M120 52 189.3 92 189.3 172 120 212 50.7 172 50.7 92 Z"/>
+        <path class="draw d-in" d="M120 92 154.6 112 154.6 152 120 172 85.4 152 85.4 112 Z"/>
+        <path class="draw d-in" d="M120 52V92M189.3 92 154.6 112M189.3 172 154.6 152M120 212v-40M50.7 172 85.4 152M50.7 92 85.4 112"/>
+        <!-- cabeza y patas: aparecen una a una -->
+        <path class="part" style="animation-delay:1.55s" fill="#4ADE80" stroke="none" d="M120 15 133 22.5 133 37.5 120 45 107 37.5 107 22.5 Z"/>
+        <path class="part" style="animation-delay:1.7s"  fill="#4ADE80" stroke="none" d="M206.6 71 217.9 77.5 217.9 90.5 206.6 97 195.3 90.5 195.3 77.5 Z"/>
+        <path class="part" style="animation-delay:1.8s"  fill="#4ADE80" stroke="none" d="M33.4 71 44.7 77.5 44.7 90.5 33.4 97 22.1 90.5 22.1 77.5 Z"/>
+        <path class="part" style="animation-delay:1.9s"  fill="#4ADE80" stroke="none" d="M206.6 167 217.9 173.5 217.9 186.5 206.6 193 195.3 186.5 195.3 173.5 Z"/>
+        <path class="part" style="animation-delay:2s"    fill="#4ADE80" stroke="none" d="M33.4 167 44.7 173.5 44.7 186.5 33.4 193 22.1 186.5 22.1 173.5 Z"/>
+        <!-- radar de stats: carga desde el centro -->
+        <polygon class="radar" points="120,60 168.5,104 178.9,166 120,196 68,162 78.4,108" fill="rgba(74,222,128,.16)" stroke="#4ADE80" stroke-width="1.4"/>
+        <g fill="#4ADE80" stroke="none">
+          <circle class="dot" style="animation-delay:2.6s"  cx="120" cy="60" r="3"/>
+          <circle class="dot" style="animation-delay:2.7s"  cx="168.5" cy="104" r="3"/>
+          <circle class="dot" style="animation-delay:2.8s"  cx="178.9" cy="166" r="3"/>
+          <circle class="dot" style="animation-delay:2.9s"  cx="120" cy="196" r="3"/>
+          <circle class="dot" style="animation-delay:3s"    cx="68" cy="162" r="3"/>
+          <circle class="dot" style="animation-delay:3.1s"  cx="78.4" cy="108" r="3"/>
+        </g>
+      </svg>
+    </div>
   </div>
 
   <section id="experiencia">
