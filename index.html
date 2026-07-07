@@ -51,7 +51,13 @@ nav a:hover{color:var(--acc);text-decoration:none}
 .lang-btn:hover{border-color:var(--acc);color:var(--acc)}
 .lang-btn .on{color:var(--acc)}
 
-.hero{padding:96px 0 72px;max-width:720px}
+.hero-zone{position:relative}
+#dust{
+  position:absolute;top:0;left:0;width:100%;height:640px;pointer-events:none;
+  -webkit-mask-image:linear-gradient(to bottom, black 65%, transparent);
+  mask-image:linear-gradient(to bottom, black 65%, transparent);
+}
+.hero{padding:96px 0 72px;max-width:720px;position:relative}
 .kicker{
   color:var(--acc);font-size:13px;font-weight:600;letter-spacing:.14em;
   text-transform:uppercase;margin-bottom:18px;font-family:var(--disp);
@@ -76,10 +82,20 @@ h1 em{font-style:normal;color:var(--acc)}
 .trace{margin-top:56px;max-width:560px;display:block}
 .trace path{stroke:var(--acc);opacity:.5;fill:none;stroke-width:1.5;stroke-linecap:round}
 
-/* reveal */
+/* reveal de carga (hero) */
 .rv{opacity:0;transform:translateY(16px);animation:rv .7s cubic-bezier(.2,.7,.3,1) forwards}
 @keyframes rv{to{opacity:1;transform:none}}
 .d1{animation-delay:.05s}.d2{animation-delay:.14s}.d3{animation-delay:.23s}.d4{animation-delay:.32s}
+
+/* reveal por scroll: 380ms, una sola vez, sin bloquear lectura (NN/g) */
+.sr{opacity:0;transform:translateY(14px);transition:opacity .38s ease-out, transform .38s cubic-bezier(.2,.7,.3,1);transition-delay:var(--srd,0ms)}
+.sr.in{opacity:1;transform:none}
+
+@media (prefers-reduced-motion: reduce){
+  .rv{animation:none;opacity:1;transform:none}
+  .sr{transition:none;opacity:1;transform:none}
+  #dust{display:none}
+}
 
 section{padding:70px 0;border-top:1px solid var(--line)}
 .sec-idx{color:var(--acc);font-size:12.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;font-family:var(--disp)}
@@ -189,6 +205,8 @@ footer{border-top:1px solid var(--line);padding:60px 0 48px}
   </div>
 </header>
 
+<div class="hero-zone">
+<canvas id="dust" aria-hidden="true"></canvas>
 <main class="wrap">
 
   <div class="hero">
@@ -325,6 +343,7 @@ footer{border-top:1px solid var(--line);padding:60px 0 48px}
   </section>
 
 </main>
+</div>
 
 <footer>
   <div class="wrap foot">
@@ -403,6 +422,83 @@ function apply(){
 }
 btn.addEventListener("click", () => { lang = lang === "es" ? "en" : "es"; apply(); });
 if (lang !== "es") apply();
+
+/* ===== Animaciones (se apagan con prefers-reduced-motion) ===== */
+const noMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+/* Reveal por scroll: una sola vez, stagger de 60ms dentro de cada grupo */
+if (!noMotion) {
+  document.querySelectorAll(".xp-item, .card, .sk, .sec-head").forEach(el => el.classList.add("sr"));
+  document.querySelectorAll(".grid, .sk-grid").forEach(group => {
+    [...group.children].forEach((el, i) => el.style.setProperty("--srd", Math.min(i, 6) * 60 + "ms"));
+  });
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add("in"); io.unobserve(e.target); } });
+  }, { threshold: 0.12, rootMargin: "0px 0px -8% 0px" });
+  document.querySelectorAll(".sr").forEach(el => io.observe(el));
+}
+
+/* Polvo de circuito: deriva lenta + repulsión suave del cursor, sin parpadeos */
+if (!noMotion) {
+  const cv = document.getElementById("dust");
+  const ctx = cv.getContext("2d");
+  const dpr = Math.min(window.devicePixelRatio || 1, 2);
+  let W, H, parts = [];
+  const mouse = { x: -9999, y: -9999 };
+  const R = 150;                       // radio de influencia del cursor
+
+  function resize() {
+    W = cv.clientWidth; H = cv.clientHeight;
+    cv.width = W * dpr; cv.height = H * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    const n = Math.min(Math.round(W * H / 14000), 110);   // densidad segun viewport
+    parts = Array.from({ length: n }, () => ({
+      x: Math.random() * W, y: Math.random() * H,
+      vx: (Math.random() - .5) * .28, vy: (Math.random() - .5) * .28,
+      r: .8 + Math.random() * 1.3,
+      a: .12 + Math.random() * .3,
+      dash: Math.random() < .18       // algunas son trazos horizontales
+    }));
+  }
+
+  function step() {
+    ctx.clearRect(0, 0, W, H);
+    for (const p of parts) {
+      const dx = p.x - mouse.x, dy = p.y - mouse.y;
+      const d = Math.hypot(dx, dy);
+      if (d < R && d > 0.01) {         // repulsion suave, decae con la distancia
+        const f = (1 - d / R) * .5;
+        p.vx += (dx / d) * f * .3;
+        p.vy += (dy / d) * f * .3;
+      }
+      p.vx *= .96; p.vy *= .96;        // amortiguacion: el fluido se calma solo
+      p.vx += (Math.random() - .5) * .012;
+      p.vy += (Math.random() - .5) * .012;
+      p.x += p.vx; p.y += p.vy;
+      if (p.x < -6) p.x = W + 6; if (p.x > W + 6) p.x = -6;
+      if (p.y < -6) p.y = H + 6; if (p.y > H + 6) p.y = -6;
+
+      const near = d < R ? (1 - d / R) : 0;
+      ctx.globalAlpha = p.a + near * .35;
+      ctx.fillStyle = "#4ADE80";
+      if (p.dash) ctx.fillRect(p.x, p.y, 7, 1.1);
+      else { ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, 6.2832); ctx.fill(); }
+    }
+    ctx.globalAlpha = 1;
+    if (!document.hidden) requestAnimationFrame(step);
+  }
+
+  const zone = document.querySelector(".hero-zone");
+  zone.addEventListener("pointermove", e => {
+    const b = cv.getBoundingClientRect();
+    mouse.x = e.clientX - b.left; mouse.y = e.clientY - b.top;
+  });
+  zone.addEventListener("pointerleave", () => { mouse.x = -9999; mouse.y = -9999; });
+  document.addEventListener("visibilitychange", () => { if (!document.hidden) requestAnimationFrame(step); });
+  window.addEventListener("resize", resize);
+  resize();
+  requestAnimationFrame(step);
+}
 </script>
 </body>
 </html>
