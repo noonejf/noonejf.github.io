@@ -60,7 +60,7 @@ nav a:hover{color:var(--ink);text-decoration:none}
 .lang-btn .on{color:var(--green)}
 
 /* ---------- hero ---------- */
-.hero{padding:88px 0 76px;display:grid;grid-template-columns:1.5fr 1fr;gap:56px;align-items:center}
+.hero{padding:96px 0 80px;max-width:680px}
 .kicker{
   color:var(--green);font-size:13px;font-weight:600;letter-spacing:.16em;
   text-transform:uppercase;margin-bottom:18px;
@@ -80,20 +80,6 @@ h1 em{font-style:italic;color:var(--green)}
 .btn-solid:hover{filter:brightness(1.12);text-decoration:none;transform:translateY(-2px)}
 .btn-ghost{background:none;color:var(--ink);border:1px solid var(--line)}
 .btn-ghost:hover{border-color:var(--green);color:var(--green);text-decoration:none;transform:translateY(-2px)}
-.portrait{position:relative;justify-self:end}
-.portrait img{
-  width:min(300px,100%);border-radius:10px;display:block;
-  border:1px solid var(--line);
-  box-shadow:0 24px 60px -24px rgba(0,0,0,.7);
-}
-.portrait::before{
-  content:"";position:absolute;inset:14px -14px -14px 14px;
-  border:1px solid var(--green);border-radius:10px;opacity:.45;z-index:-1;
-}
-.portrait figcaption{
-  margin-top:14px;font-size:12.5px;color:var(--faint);text-align:right;
-}
-
 /* reveal */
 .rv{opacity:0;transform:translateY(16px);animation:rv .7s cubic-bezier(.2,.7,.3,1) forwards}
 @keyframes rv{to{opacity:1;transform:none}}
@@ -168,8 +154,6 @@ footer{border-top:1px solid var(--line);padding:64px 0 44px}
 }
 
 @media(max-width:760px){
-  .hero{grid-template-columns:1fr;gap:40px}
-  .portrait{justify-self:start}
   .xp-item{grid-template-columns:1fr;gap:6px}
   nav a:not(.keep){display:none}
 }
@@ -196,23 +180,17 @@ footer{border-top:1px solid var(--line);padding:64px 0 44px}
 
   <!-- HERO -->
   <div class="hero">
-    <div>
-      <div class="kicker rv d1" data-i18n="hero_tag">Ingeniero Mecatrónico · PUCP · Lima, Perú</div>
-      <h1 class="rv d2" data-i18n="hero_h1">Ingeniería que une <em>hardware</em>, <em>software</em> y <em>espacio</em>.</h1>
-      <p class="sub rv d3" data-i18n="hero_sub">
-        Soy José Fabián Sifuentes. Diseño electrónica y firmware para robots y satélites,
-        construyo las interfaces que los controlan, y desarrollo aplicaciones web de
-        extremo a extremo. Actualmente trabajo en ingeniería espacial en INRAS-PUCP.
-      </p>
-      <div class="hero-cta rv d4">
-        <a class="btn btn-solid" href="#proyectos" data-i18n="hero_cta1">Ver proyectos</a>
-        <a class="btn btn-ghost" href="https://github.com/noonejf" target="_blank" rel="noopener">GitHub</a>
-      </div>
+    <div class="kicker rv d1" data-i18n="hero_tag">Ingeniero Mecatrónico · PUCP · Lima, Perú</div>
+    <h1 class="rv d2" data-i18n="hero_h1">Ingeniería que une <em>hardware</em>, <em>software</em> y <em>espacio</em>.</h1>
+    <p class="sub rv d3" data-i18n="hero_sub">
+      Soy José Fabián Sifuentes. Diseño electrónica y firmware para robots y satélites,
+      construyo las interfaces que los controlan, y desarrollo aplicaciones web de
+      extremo a extremo. Actualmente trabajo en ingeniería espacial en INRAS-PUCP.
+    </p>
+    <div class="hero-cta rv d4">
+      <a class="btn btn-solid" href="#proyectos" data-i18n="hero_cta1">Ver proyectos</a>
+      <a class="btn btn-ghost" href="https://github.com/noonejf" target="_blank" rel="noopener">GitHub</a>
     </div>
-    <figure class="portrait rv d3">
-      <img src="assets/retrato.jpg" alt="José Fabián Sifuentes Gálvez" width="600" height="750">
-      <figcaption data-i18n="hero_cap">José Fabián Sifuentes Gálvez</figcaption>
-    </figure>
   </div>
 
   <!-- EXPERIENCIA -->
@@ -381,7 +359,7 @@ const I18N = {
     hero_tag:"Mechatronics Engineer · PUCP · Lima, Peru",
     hero_h1:"Engineering that joins <em>hardware</em>, <em>software</em> and <em>space</em>.",
     hero_sub:"I'm José Fabián Sifuentes. I design electronics and firmware for robots and satellites, build the interfaces that control them, and develop end-to-end web applications. I currently work in space engineering at INRAS-PUCP.",
-    hero_cta1:"View projects", hero_cap:"José Fabián Sifuentes Gálvez",
+    hero_cta1:"View projects",
     sec_xp_k:"Career", sec_xp:"Experience",
     x1_when:"Jul 2024 — present", x1_role:"Professional Intern — Space Engineering",
     x1_note:"(pre-professional 2024–2025, professional since 2026)",
