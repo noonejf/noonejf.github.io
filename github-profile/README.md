@@ -3,14 +3,14 @@
 
 # José Fabián Sifuentes Gálvez
 
-Ingeniero Mecatrónico (PUCP). Trabajo donde el hardware y el software se encuentran:
-PCBs y firmware, estaciones terrenas para misiones satelitales, robótica teleoperada
-y aplicaciones web fullstack.
+Ingeniero Mecatrónico (PUCP). Resuelvo problemas de punta a punta, donde el hardware
+y el software se encuentran: robótica industrial y teleoperada, PCBs y firmware,
+aplicaciones web fullstack y sistemas de comunicación satelital.
 
 Actualmente soy practicante profesional de ingeniería espacial en INRAS-PUCP.
-Antes, en Bear Tech, desarrollé el software completo de un robot de inspección
-de ductos: visión 360° con 6 cámaras, navegación IMU + odometría y detección de
-fallas con YOLOv8 (código privado del cliente).
+Antes, en Bear Tech, desarrollé el software de un sistema de inspección robótica
+industrial: teleoperación, video multicámara en tiempo real y detección de
+anomalías con visión por computadora (proyecto privado).
 
 **Portafolio:** [noonejf.github.io](https://noonejf.github.io) · **Contacto:** jf19sifuentesg@gmail.com · Lima, Perú
 
@@ -26,7 +26,7 @@ fallas con YOLOv8 (código privado del cliente).
 | Repositorio | Descripción | Tecnologías |
 |---|---|---|
 | [V_HAND](https://github.com/noonejf/V_HAND) | Teleoperación de mano robótica con streaming de video de baja latencia | PyQt5 · OpenCV · CoppeliaSim |
-| [servo-pid-control](https://github.com/noonejf/servo-pid-control) | PID digital con restricción de voltaje: diseño en MATLAB, despliegue embebido y validación real | MATLAB · PlatformIO · Python |
+| [robot-trajectory-control](https://github.com/noonejf/robot-trajectory-control) | Control PID de trayectoria para un robot móvil: diseño en MATLAB, despliegue embebido y validación real | MATLAB · PlatformIO · Python |
 
 ## Tecnologías
 
