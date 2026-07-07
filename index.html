@@ -5,153 +5,124 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>José Fabián Sifuentes — Ingeniero Mecatrónico</title>
 <meta name="description" content="José Fabián Sifuentes Gálvez — Ingeniero Mecatrónico (PUCP). Sistemas embebidos, comunicaciones satelitales, robótica y desarrollo fullstack.">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='0.9em' font-size='90'>🛰️</text></svg>">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23070B09'/%3E%3Ccircle cx='16' cy='16' r='4.2' fill='none' stroke='%234ADE80' stroke-width='1.6'/%3E%3Cellipse cx='16' cy='16' rx='11' ry='4.6' fill='none' stroke='%234ADE80' stroke-width='1.3' transform='rotate(-24 16 16)'/%3E%3Ccircle cx='25.6' cy='11.2' r='1.8' fill='%234ADE80'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Albert+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#0E1E30;
-  --panel:#142940;
-  --panel-2:#16293E;
-  --line:#24405C;
-  --ink:#DCE7F3;
-  --dim:#93A9C2;
-  --faint:#5F7590;
-  --green:#33B389;
-  --green-soft:rgba(51,179,137,.14);
-  --serif:'Fraunces',Georgia,serif;
-  --sans:'Albert Sans',system-ui,sans-serif;
+  --bg:#070B09; --panel:#0C1510; --panel2:#0A120E; --line:#1C2E24;
+  --ink:#D8E9DE; --dim:#8FAA9A; --faint:#5A7365;
+  --acc:#4ADE80; --acc-soft:rgba(74,222,128,.12);
+  --disp:'Chakra Petch',sans-serif; --body:'IBM Plex Sans',sans-serif;
+  --rad:3px;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{
   background:var(--bg);color:var(--ink);
-  font-family:var(--sans);font-size:16px;line-height:1.7;
+  font-family:var(--body);font-size:15.5px;line-height:1.7;
   background-image:
-    radial-gradient(1100px 600px at 85% -10%, rgba(51,179,137,.07), transparent 60%),
-    radial-gradient(900px 700px at -10% 40%, rgba(60,110,170,.09), transparent 55%);
-  background-attachment:fixed;
+    repeating-linear-gradient(0deg, rgba(74,222,128,.025) 0 1px, transparent 1px 4px),
+    radial-gradient(900px 500px at 50% -10%, rgba(74,222,128,.06), transparent 60%);
 }
-::selection{background:var(--green);color:#08131f}
-a{color:var(--green);text-decoration:none}
+::selection{background:var(--acc);color:#000}
+a{color:var(--acc);text-decoration:none}
 a:hover{text-decoration:underline}
 .wrap{max-width:1020px;margin:0 auto;padding:0 24px}
+svg.ic{width:19px;height:19px;stroke:var(--acc);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round;flex:none}
 
-/* ---------- header ---------- */
 header{
   position:sticky;top:0;z-index:50;
-  background:rgba(14,30,48,.9);backdrop-filter:blur(10px);
+  background:rgba(7,11,9,.9);backdrop-filter:blur(10px);
   border-bottom:1px solid var(--line);
 }
-.bar{display:flex;align-items:center;justify-content:space-between;height:62px}
-.sig{font-family:var(--serif);font-weight:600;font-size:17px;letter-spacing:.01em}
-.sig span{color:var(--green)}
-nav{display:flex;gap:26px;align-items:center}
-nav a{color:var(--dim);font-size:14px;font-weight:500}
-nav a:hover{color:var(--ink);text-decoration:none}
+.bar{display:flex;align-items:center;justify-content:space-between;height:60px}
+.sig{font-family:var(--disp);font-weight:600;font-size:15px;display:flex;align-items:center;gap:9px}
+.sig svg{width:20px;height:20px}
+nav{display:flex;gap:24px;align-items:center}
+nav a{color:var(--dim);font-size:13.5px;font-weight:500}
+nav a:hover{color:var(--acc);text-decoration:none}
 .lang-btn{
-  font-family:var(--sans);font-size:12.5px;font-weight:600;
-  background:none;border:1px solid var(--line);border-radius:999px;
-  color:var(--dim);padding:6px 14px;cursor:pointer;letter-spacing:.06em;
-  transition:all .18s;
+  font-family:var(--disp);font-size:12px;font-weight:600;cursor:pointer;
+  background:none;border:1px solid var(--line);border-radius:var(--rad);
+  color:var(--dim);padding:6px 13px;letter-spacing:.08em;transition:all .18s;
 }
-.lang-btn:hover{border-color:var(--green);color:var(--green)}
-.lang-btn .on{color:var(--green)}
+.lang-btn:hover{border-color:var(--acc);color:var(--acc)}
+.lang-btn .on{color:var(--acc)}
 
-/* ---------- hero ---------- */
-.hero{padding:96px 0 80px;max-width:680px}
+.hero{padding:96px 0 72px;max-width:720px}
 .kicker{
-  color:var(--green);font-size:13px;font-weight:600;letter-spacing:.16em;
-  text-transform:uppercase;margin-bottom:18px;
+  color:var(--acc);font-size:13px;font-weight:600;letter-spacing:.14em;
+  text-transform:uppercase;margin-bottom:18px;font-family:var(--disp);
 }
 h1{
-  font-family:var(--serif);font-weight:600;
-  font-size:clamp(36px,5.4vw,58px);line-height:1.08;letter-spacing:-.01em;
+  font-family:var(--disp);font-weight:700;
+  font-size:clamp(30px,4.8vw,52px);line-height:1.12;letter-spacing:.06em;
 }
-h1 em{font-style:italic;color:var(--green)}
-.hero p.sub{margin-top:22px;color:var(--dim);font-size:17px;max-width:520px}
+h1 em{font-style:normal;color:var(--acc)}
+.hero p.sub{margin-top:22px;color:var(--dim);font-size:16.5px;max-width:560px}
 .hero-cta{margin-top:34px;display:flex;gap:14px;flex-wrap:wrap}
 .btn{
-  display:inline-block;padding:12px 26px;font-size:14.5px;font-weight:600;
-  border-radius:6px;transition:all .18s;
+  display:inline-flex;align-items:center;gap:8px;padding:12px 26px;
+  font-size:14px;font-weight:600;border-radius:var(--rad);
+  transition:all .18s;font-family:var(--disp);
 }
-.btn-solid{background:var(--green);color:#08131f;border:1px solid var(--green)}
+.btn-solid{background:var(--acc);color:#000;border:1px solid var(--acc)}
 .btn-solid:hover{filter:brightness(1.12);text-decoration:none;transform:translateY(-2px)}
 .btn-ghost{background:none;color:var(--ink);border:1px solid var(--line)}
-.btn-ghost:hover{border-color:var(--green);color:var(--green);text-decoration:none;transform:translateY(-2px)}
+.btn-ghost:hover{border-color:var(--acc);color:var(--acc);text-decoration:none;transform:translateY(-2px)}
+.btn-ghost svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.trace{margin-top:56px;max-width:560px;display:block}
+.trace path{stroke:var(--acc);opacity:.5;fill:none;stroke-width:1.5;stroke-linecap:round}
+
 /* reveal */
 .rv{opacity:0;transform:translateY(16px);animation:rv .7s cubic-bezier(.2,.7,.3,1) forwards}
 @keyframes rv{to{opacity:1;transform:none}}
 .d1{animation-delay:.05s}.d2{animation-delay:.14s}.d3{animation-delay:.23s}.d4{animation-delay:.32s}
 
-/* ---------- sections ---------- */
-section{padding:72px 0;border-top:1px solid var(--line)}
-.sec-head{margin-bottom:42px}
-.sec-head .idx{color:var(--green);font-size:12.5px;font-weight:600;letter-spacing:.18em;text-transform:uppercase}
-.sec-head h2{font-family:var(--serif);font-weight:600;font-size:clamp(26px,3.6vw,36px);margin-top:6px}
+section{padding:70px 0;border-top:1px solid var(--line)}
+.sec-idx{color:var(--acc);font-size:12.5px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;font-family:var(--disp)}
+.sec-idx::before{content:"── "}
+.sec-idx::after{content:" ──"}
+.sec-head h2{font-family:var(--disp);font-weight:700;font-size:clamp(24px,3.4vw,32px);margin:6px 0 38px;letter-spacing:.05em}
 
-/* ---------- experiencia ---------- */
-.xp-item{
-  display:grid;grid-template-columns:180px 1fr;gap:28px;
-  padding:26px 0;border-bottom:1px solid var(--line);
-}
+.xp-item{display:grid;grid-template-columns:170px 1fr;gap:26px;padding:24px 0;border-bottom:1px solid var(--line)}
 .xp-item:last-child{border-bottom:none}
-.xp-item .when{font-size:13.5px;color:var(--faint);padding-top:4px}
-.xp-item h3{font-family:var(--serif);font-weight:600;font-size:20px}
-.xp-item .org{color:var(--green);font-size:14px;font-weight:600;margin:2px 0 8px}
-.xp-item p{color:var(--dim);font-size:15px;max-width:620px}
+.xp-item .when{font-size:13px;color:var(--faint);padding-top:3px;font-family:var(--disp)}
+.xp-item h3{font-family:var(--disp);font-weight:600;font-size:18px}
+.xp-item .org{color:var(--acc);font-size:13.5px;font-weight:600;margin:2px 0 8px}
+.xp-item .org small{color:var(--faint);font-weight:400}
+.xp-item p{color:var(--dim);font-size:14.5px;max-width:620px}
 
-/* ---------- proyectos ---------- */
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:18px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
 .card{
-  background:var(--panel);border:1px solid var(--line);border-radius:10px;
-  padding:26px 24px;display:flex;flex-direction:column;gap:10px;
-  transition:all .22s;
+  background:var(--panel);border:1px solid var(--line);border-radius:var(--rad);
+  padding:24px 22px;display:flex;flex-direction:column;gap:10px;transition:all .2s;
 }
-.card:hover{border-color:var(--green);transform:translateY(-4px);box-shadow:0 18px 44px -22px rgba(0,0,0,.65)}
-.card h3{font-family:var(--serif);font-weight:600;font-size:19px}
-.card .role{font-size:12.5px;color:var(--green);font-weight:600;letter-spacing:.08em;text-transform:uppercase}
-.card p{color:var(--dim);font-size:14px;flex:1}
+.card:hover{border-color:var(--acc);transform:translateY(-3px)}
+.card h3{font-family:var(--disp);font-weight:600;font-size:17px}
+.card .role{font-size:11.5px;color:var(--acc);font-weight:600;letter-spacing:.1em;text-transform:uppercase;font-family:var(--disp)}
+.card p{color:var(--dim);font-size:13.5px;flex:1}
 .chips{display:flex;flex-wrap:wrap;gap:6px}
-.chip{
-  font-size:12px;padding:3px 11px;border-radius:999px;
-  background:var(--green-soft);color:var(--green);font-weight:500;
-}
-.chip.mut{background:rgba(147,169,194,.12);color:var(--dim)}
-.card .note{font-size:12.5px;color:var(--faint);font-style:italic}
-.card .repo{font-size:13.5px;font-weight:600}
+.chip{font-size:11.5px;padding:3px 10px;border-radius:60px;background:var(--acc-soft);color:var(--acc);font-weight:500}
+.card .note{font-size:12px;color:var(--faint);font-style:italic}
+.card .repo{font-size:13px;font-weight:600;display:inline-flex;align-items:center;gap:6px}
+.card .repo svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
 
-/* ---------- skills ---------- */
-.sk-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:16px}
-.sk{background:var(--panel-2);border:1px solid var(--line);border-radius:10px;padding:20px}
-.sk h4{font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--green);margin-bottom:8px;font-weight:600}
-.sk p{font-size:14px;color:var(--dim)}
+.sk-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px}
+.sk{background:var(--panel2);border:1px solid var(--line);border-radius:var(--rad);padding:18px}
+.sk h4{
+  font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--acc);
+  margin-bottom:9px;font-weight:600;font-family:var(--disp);
+  display:flex;align-items:center;gap:9px;
+}
+.sk p{font-size:13.5px;color:var(--dim)}
 
-/* ---------- cv ---------- */
-.cv-row{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:18px}
-.cv-card{
-  border:1px solid var(--line);background:var(--panel);border-radius:10px;
-  padding:24px;display:flex;flex-direction:column;gap:8px;transition:border-color .2s;
-}
-.cv-card:hover{border-color:var(--green)}
-.cv-card h3{font-family:var(--serif);font-weight:600;font-size:18px}
-.cv-card p{font-size:14px;color:var(--dim);flex:1}
-.cv-links{display:flex;gap:10px;margin-top:6px}
-.cv-links a{
-  font-size:13px;font-weight:600;border:1px solid var(--line);border-radius:6px;
-  padding:7px 16px;color:var(--ink);
-}
-.cv-links a:hover{border-color:var(--green);color:var(--green);text-decoration:none}
-
-/* ---------- footer ---------- */
-footer{border-top:1px solid var(--line);padding:64px 0 44px}
-.foot h2{font-family:var(--serif);font-weight:600;font-size:clamp(24px,4vw,34px)}
-.foot .mail{display:inline-block;margin-top:10px;font-size:clamp(17px,2.6vw,22px);font-weight:600}
-.foot-meta{
-  font-size:13px;color:var(--faint);margin-top:36px;
-  display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;
-}
+footer{border-top:1px solid var(--line);padding:60px 0 48px}
+.foot h2{font-family:var(--disp);font-weight:700;font-size:clamp(22px,3.6vw,30px)}
+.foot .mail{display:inline-block;margin-top:10px;font-size:clamp(16px,2.4vw,20px);font-weight:600}
+.foot-meta{font-size:12.5px;color:var(--faint);margin-top:32px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 
 @media(max-width:760px){
   .xp-item{grid-template-columns:1fr;gap:6px}
@@ -161,15 +132,58 @@ footer{border-top:1px solid var(--line);padding:64px 0 44px}
 </head>
 <body>
 
+<!-- Iconos propios (SVG de línea, sin emojis) -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-orbit" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="3.4"/>
+      <ellipse cx="12" cy="12" rx="9.5" ry="3.9" transform="rotate(-24 12 12)"/>
+      <circle cx="20.2" cy="7.6" r="1.3" fill="currentColor" stroke="none"/>
+    </symbol>
+    <symbol id="i-chip" viewBox="0 0 24 24">
+      <rect x="7" y="7" width="10" height="10" rx="1.5"/>
+      <path d="M10 7V4M14 7V4M10 20v-3M14 20v-3M7 10H4M7 14H4M20 10h-3M20 14h-3"/>
+    </symbol>
+    <symbol id="i-antenna" viewBox="0 0 24 24">
+      <path d="M12 21v-8"/><circle cx="12" cy="11" r="2"/>
+      <path d="M7.5 6.5a6.4 6.4 0 0 1 9 0M5 4a10 10 0 0 1 14 0"/>
+    </symbol>
+    <symbol id="i-arm" viewBox="0 0 24 24">
+      <path d="M4 20h7M7.5 20v-6l5-4 4.5 2"/>
+      <circle cx="7.5" cy="14" r="1.6"/><circle cx="12.5" cy="10" r="1.6"/>
+      <path d="M17 12l2.5-1.5M17 12l2 2.5"/>
+    </symbol>
+    <symbol id="i-code" viewBox="0 0 24 24">
+      <path d="M8.5 7L4 12l4.5 5M15.5 7L20 12l-4.5 5M13 5l-2.5 14"/>
+    </symbol>
+    <symbol id="i-globe" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="8.5"/>
+      <path d="M3.5 12h17M12 3.5c-5.5 5-5.5 12 0 17M12 3.5c5.5 5 5.5 12 0 17"/>
+    </symbol>
+    <symbol id="i-eye" viewBox="0 0 24 24">
+      <path d="M2.5 12S6 5.8 12 5.8 21.5 12 21.5 12 18 18.2 12 18.2 2.5 12 2.5 12z"/>
+      <circle cx="12" cy="12" r="2.6"/>
+    </symbol>
+    <symbol id="i-cloud" viewBox="0 0 24 24">
+      <path d="M7 18.5h10.2a3.8 3.8 0 0 0 .6-7.6 5.5 5.5 0 0 0-10.8-.9A4.2 4.2 0 0 0 7 18.5z"/>
+    </symbol>
+    <symbol id="i-out" viewBox="0 0 24 24">
+      <path d="M7 17L17 7M9 7h8v8"/>
+    </symbol>
+  </defs>
+</svg>
+
 <header>
   <div class="wrap bar">
-    <div class="sig">J. Fabián <span>Sifuentes</span></div>
+    <div class="sig">
+      <svg class="ic" aria-hidden="true"><use href="#i-orbit"/></svg>
+      Fabián Sifuentes
+    </div>
     <nav>
       <a href="#experiencia" data-i18n="nav_xp">Experiencia</a>
       <a href="#proyectos" data-i18n="nav_projects">Proyectos</a>
       <a href="#skills" data-i18n="nav_skills">Habilidades</a>
-      <a href="#cv" class="keep">CV</a>
-      <button class="lang-btn" id="langBtn" aria-label="Cambiar idioma / switch language">
+      <button class="lang-btn keep" id="langBtn" aria-label="Cambiar idioma / switch language">
         <span id="esTag" class="on">ES</span> · <span id="enTag">EN</span>
       </button>
     </nav>
@@ -178,34 +192,34 @@ footer{border-top:1px solid var(--line);padding:64px 0 44px}
 
 <main class="wrap">
 
-  <!-- HERO -->
   <div class="hero">
     <div class="kicker rv d1" data-i18n="hero_tag">Ingeniero Mecatrónico · PUCP · Lima, Perú</div>
-    <h1 class="rv d2" data-i18n="hero_h1">Ingeniería que une <em>hardware</em>, <em>software</em> y <em>espacio</em>.</h1>
+    <h1 class="rv d2" data-i18n="hero_h1">Electrónica, <em>firmware</em> y software que llegan a <em>órbita</em>.</h1>
     <p class="sub rv d3" data-i18n="hero_sub">
-      Soy José Fabián Sifuentes. Diseño electrónica y firmware para robots y satélites,
-      construyo las interfaces que los controlan, y desarrollo aplicaciones web de
-      extremo a extremo. Actualmente trabajo en ingeniería espacial en INRAS-PUCP.
+      Soy José Fabián Sifuentes. Diseño PCBs y firmware para robots y satélites,
+      construyo las interfaces que los controlan, y desarrollo aplicaciones web
+      de extremo a extremo. Actualmente en ingeniería espacial en INRAS-PUCP.
     </p>
     <div class="hero-cta rv d4">
       <a class="btn btn-solid" href="#proyectos" data-i18n="hero_cta1">Ver proyectos</a>
-      <a class="btn btn-ghost" href="https://github.com/noonejf" target="_blank" rel="noopener">GitHub</a>
+      <a class="btn btn-ghost" href="https://github.com/noonejf" target="_blank" rel="noopener">GitHub <svg aria-hidden="true"><use href="#i-out"/></svg></a>
     </div>
+    <svg class="trace rv d4" viewBox="0 0 560 40" aria-hidden="true" preserveAspectRatio="none">
+      <path d="M0 20 H140 L152 20 158 6 166 34 174 12 180 20 H320 L332 20 338 8 346 32 352 20 H560"/>
+    </svg>
   </div>
 
-  <!-- EXPERIENCIA -->
   <section id="experiencia">
-    <div class="sec-head"><div class="idx" data-i18n="sec_xp_k">Trayectoria</div><h2 data-i18n="sec_xp">Experiencia</h2></div>
+    <div class="sec-head"><div class="sec-idx" data-i18n="sec_xp_k">Trayectoria</div><h2 data-i18n="sec_xp">Experiencia</h2></div>
 
     <div class="xp-item">
-      <div class="when" data-i18n="x1_when">Jul 2024 — actualidad</div>
+      <div class="when" data-i18n="x1_when">Jul 2024 — act.</div>
       <div>
         <h3 data-i18n="x1_role">Practicante Profesional — Ingeniería Espacial</h3>
-        <div class="org">INRAS · PUCP <span style="color:var(--faint);font-weight:400" data-i18n="x1_note">(preprofesional 2024–2025, profesional desde 2026)</span></div>
+        <div class="org">INRAS · PUCP <small data-i18n="x1_note">(preprofesional 2024–2025, profesional desde 2026)</small></div>
         <p data-i18n="x1_desc">Interfaz de estación terrena de la misión satelital INTISAT, sistemas de comunicación UHF, telemetría en tiempo real y simulaciones 3D de tethers espaciales.</p>
       </div>
     </div>
-
     <div class="xp-item">
       <div class="when" data-i18n="x2_when">Ene — Jun 2025</div>
       <div>
@@ -214,16 +228,14 @@ footer{border-top:1px solid var(--line);padding:64px 0 44px}
         <p data-i18n="x2_desc">Desarrollé el software de un robot de inspección interna de ductos: teleoperación por joystick sobre TCP/IP, streaming simultáneo de 6 cámaras (4 en configuración 360°), navegación por IMU + odometría con visualización 3D, y detección automática de fallas estructurales con YOLOv8. Además, diseño de PCBs multicapa en EasyEDA validadas en prototipos físicos.</p>
       </div>
     </div>
-
     <div class="xp-item">
-      <div class="when" data-i18n="x3_when">2022 — actualidad</div>
+      <div class="when" data-i18n="x3_when">2022 — act.</div>
       <div>
         <h3 data-i18n="x3_role">Desarrollador Fullstack</h3>
         <div class="org">Freelance</div>
         <p data-i18n="x3_desc">Aplicación web de gestión de proyectos: React, Node.js + NestJS, Django y bases de datos SQL, desplegada en AWS (EC2, Lambda) con flujo Git profesional.</p>
       </div>
     </div>
-
     <div class="xp-item">
       <div class="when" data-i18n="x4_when">Feb — Sep 2024</div>
       <div>
@@ -234,15 +246,14 @@ footer{border-top:1px solid var(--line);padding:64px 0 44px}
     </div>
   </section>
 
-  <!-- PROYECTOS -->
   <section id="proyectos">
-    <div class="sec-head"><div class="idx" data-i18n="sec_pr_k">Trabajo seleccionado</div><h2 data-i18n="sec_projects">Proyectos</h2></div>
+    <div class="sec-head"><div class="sec-idx" data-i18n="sec_pr_k">Trabajo seleccionado</div><h2 data-i18n="sec_projects">Proyectos</h2></div>
     <div class="grid">
 
       <article class="card">
         <div class="role" data-i18n="r_ductos">Industrial · Bear Tech</div>
         <h3 data-i18n="t_ductos">Robot Inspector de Ductos</h3>
-        <p data-i18n="p_ductos">Plataforma robótica para inspección interna de ductos: visión 360° con 6 cámaras, navegación IMU + odometría, HUD estilo aviónica con escena 3D, y detección de 7 tipos de falla estructural con YOLOv8.</p>
+        <p data-i18n="p_ductos">Plataforma robótica para inspección interna de ductos: visión 360° con 6 cámaras, navegación IMU + odometría, HUD con escena 3D y detección de 7 tipos de falla estructural con YOLOv8.</p>
         <div class="chips"><span class="chip">YOLOv8</span><span class="chip">PyQt5</span><span class="chip">Raspberry Pi</span><span class="chip">STM32</span></div>
         <span class="note" data-i18n="n_priv">Código propiedad del cliente — disponible para conversar sobre la arquitectura.</span>
       </article>
@@ -273,7 +284,7 @@ footer{border-top:1px solid var(--line);padding:64px 0 44px}
         <h3>V-HAND</h3>
         <p data-i18n="p_vhand">Teleoperación de mano robótica: estación de control PyQt5 con streaming de video de baja latencia, control maestro-esclavo y simulación en CoppeliaSim.</p>
         <div class="chips"><span class="chip">PyQt5</span><span class="chip">OpenCV</span><span class="chip">CoppeliaSim</span></div>
-        <a class="repo" href="https://github.com/noonejf/V_HAND" target="_blank" rel="noopener" data-i18n="see_repo">Ver repositorio →</a>
+        <a class="repo" href="https://github.com/noonejf/V_HAND" target="_blank" rel="noopener"><span data-i18n="see_repo">Ver repositorio</span> <svg aria-hidden="true"><use href="#i-out"/></svg></a>
       </article>
 
       <article class="card">
@@ -281,7 +292,7 @@ footer{border-top:1px solid var(--line);padding:64px 0 44px}
         <h3 data-i18n="t_pid">Servo PID Digital</h3>
         <p data-i18n="p_pid">PID con restricción de voltaje: síntesis en MATLAB/Simulink, despliegue embebido con PlatformIO y validación con trayectorias reales.</p>
         <div class="chips"><span class="chip">MATLAB</span><span class="chip">PlatformIO</span><span class="chip">Python</span></div>
-        <a class="repo" href="https://github.com/noonejf/servo-pid-control" target="_blank" rel="noopener" data-i18n="see_repo">Ver repositorio →</a>
+        <a class="repo" href="https://github.com/noonejf/servo-pid-control" target="_blank" rel="noopener"><span data-i18n="see_repo">Ver repositorio</span> <svg aria-hidden="true"><use href="#i-out"/></svg></a>
       </article>
 
       <article class="card">
@@ -295,47 +306,23 @@ footer{border-top:1px solid var(--line);padding:64px 0 44px}
         <div class="role" data-i18n="r_jumper">En desarrollo</div>
         <h3>Jumper</h3>
         <p data-i18n="p_jumper">Servicio cloud adaptativo sobre Azure + AWS, parte de un producto aún no anunciado.</p>
-        <div class="chips"><span class="chip mut">Azure</span><span class="chip mut">AWS</span></div>
+        <div class="chips"><span class="chip">Azure</span><span class="chip">AWS</span></div>
         <span class="note" data-i18n="n_soon">Detalles próximamente.</span>
       </article>
 
     </div>
   </section>
 
-  <!-- SKILLS -->
   <section id="skills">
-    <div class="sec-head"><div class="idx" data-i18n="sec_sk_k">Capacidades</div><h2 data-i18n="sec_skills">Habilidades</h2></div>
+    <div class="sec-head"><div class="sec-idx" data-i18n="sec_sk_k">Capacidades</div><h2 data-i18n="sec_skills">Habilidades</h2></div>
     <div class="sk-grid">
-      <div class="sk"><h4 data-i18n="k1_t">Embebidos y hardware</h4><p>STM32 · Raspberry Pi 5 · Arduino · EasyEDA · KiCad · I2C / SPI / UART / CAN</p></div>
-      <div class="sk"><h4 data-i18n="k2_t">RF y satelital</h4><p data-i18n="k2_d">Enlaces UHF · link budget · telemetría · antenas · PLL / TCXO</p></div>
-      <div class="sk"><h4 data-i18n="k3_t">Robótica</h4><p data-i18n="k3_d">ROS2 · Gazebo · CoppeliaSim · cinemática · control PID</p></div>
-      <div class="sk"><h4 data-i18n="k4_t">Lenguajes</h4><p>Python · C/C++ · JavaScript / TypeScript · MATLAB</p></div>
-      <div class="sk"><h4 data-i18n="k5_t">Web</h4><p>React · Node.js · NestJS · Django · REST APIs</p></div>
-      <div class="sk"><h4 data-i18n="k6_t">IA y visión</h4><p data-i18n="k6_d">YOLOv8 · redes neuronales · reconstrucción 3D · OpenCV · fusión de sensores</p></div>
-      <div class="sk"><h4 data-i18n="k7_t">Cloud y datos</h4><p>AWS (EC2, Lambda) · Azure · PostgreSQL · SQL Server · Firebase</p></div>
-      <div class="sk"><h4 data-i18n="k8_t">Diseño mecánico</h4><p>SolidWorks · Fusion 360 · Inventor · ANSYS</p></div>
-    </div>
-  </section>
-
-  <!-- CV -->
-  <section id="cv">
-    <div class="sec-head"><div class="idx" data-i18n="sec_cv_k">Documentos</div><h2 data-i18n="sec_cv">Currículum</h2></div>
-    <div class="cv-row">
-      <div class="cv-card">
-        <h3 data-i18n="cv1_t">Perfil completo</h3>
-        <p data-i18n="cv1_d">Mecatrónica, espacio y fullstack: la vista panorámica.</p>
-        <div class="cv-links"><a href="cv/CV_Completo_ES.pdf" download>Español</a><a href="cv/CV_Completo_EN.pdf" download>English</a></div>
-      </div>
-      <div class="cv-card">
-        <h3 data-i18n="cv2_t">Diseño electrónico</h3>
-        <p data-i18n="cv2_d">PCBs, sistemas embebidos, RF y comunicaciones satelitales.</p>
-        <div class="cv-links"><a href="cv/CV_Electronico_ES.pdf" download>Español</a><a href="cv/CV_Electronico_EN.pdf" download>English</a></div>
-      </div>
-      <div class="cv-card">
-        <h3 data-i18n="cv3_t">Desarrollo de software</h3>
-        <p data-i18n="cv3_d">Fullstack: React, Node, Django, AWS y Python científico.</p>
-        <div class="cv-links"><a href="cv/CV_Programador_ES.pdf" download>Español</a><a href="cv/CV_Programador_EN.pdf" download>English</a></div>
-      </div>
+      <div class="sk"><h4><svg class="ic" aria-hidden="true"><use href="#i-chip"/></svg><span data-i18n="k1_t">Embebidos y hardware</span></h4><p>STM32 · Raspberry Pi 5 · Arduino · EasyEDA · KiCad · I2C / SPI / UART / CAN</p></div>
+      <div class="sk"><h4><svg class="ic" aria-hidden="true"><use href="#i-antenna"/></svg><span data-i18n="k2_t">RF y satelital</span></h4><p data-i18n="k2_d">Enlaces UHF · link budget · telemetría · antenas · PLL / TCXO</p></div>
+      <div class="sk"><h4><svg class="ic" aria-hidden="true"><use href="#i-arm"/></svg><span data-i18n="k3_t">Robótica</span></h4><p data-i18n="k3_d">ROS2 · Gazebo · CoppeliaSim · cinemática · control PID</p></div>
+      <div class="sk"><h4><svg class="ic" aria-hidden="true"><use href="#i-code"/></svg><span data-i18n="k4_t">Lenguajes</span></h4><p>Python · C/C++ · JavaScript / TypeScript · MATLAB</p></div>
+      <div class="sk"><h4><svg class="ic" aria-hidden="true"><use href="#i-globe"/></svg><span data-i18n="k5_t">Web</span></h4><p>React · Node.js · NestJS · Django · REST APIs</p></div>
+      <div class="sk"><h4><svg class="ic" aria-hidden="true"><use href="#i-eye"/></svg><span data-i18n="k6_t">IA y visión</span></h4><p data-i18n="k6_d">YOLOv8 · redes neuronales · reconstrucción 3D · OpenCV · fusión de sensores</p></div>
+      <div class="sk"><h4><svg class="ic" aria-hidden="true"><use href="#i-cloud"/></svg><span data-i18n="k7_t">Cloud y datos</span></h4><p>AWS (EC2, Lambda) · Azure · PostgreSQL · SQL Server · Firebase</p></div>
     </div>
   </section>
 
@@ -357,8 +344,8 @@ const I18N = {
   en: {
     nav_projects:"Projects", nav_xp:"Experience", nav_skills:"Skills",
     hero_tag:"Mechatronics Engineer · PUCP · Lima, Peru",
-    hero_h1:"Engineering that joins <em>hardware</em>, <em>software</em> and <em>space</em>.",
-    hero_sub:"I'm José Fabián Sifuentes. I design electronics and firmware for robots and satellites, build the interfaces that control them, and develop end-to-end web applications. I currently work in space engineering at INRAS-PUCP.",
+    hero_h1:"Electronics, <em>firmware</em> and software that reach <em>orbit</em>.",
+    hero_sub:"I'm José Fabián Sifuentes. I design PCBs and firmware for robots and satellites, build the interfaces that control them, and develop end-to-end web applications. Currently in space engineering at INRAS-PUCP.",
     hero_cta1:"View projects",
     sec_xp_k:"Career", sec_xp:"Experience",
     x1_when:"Jul 2024 — present", x1_role:"Professional Intern — Space Engineering",
@@ -372,7 +359,7 @@ const I18N = {
     x4_desc:"Analysis of upper-limb myoelectric prostheses and the OCTAHAND prosthesis recovery and improvement project.",
     sec_pr_k:"Selected work", sec_projects:"Projects",
     r_ductos:"Industrial · Bear Tech", t_ductos:"Pipeline Inspection Robot",
-    p_ductos:"Robotic platform for internal pipeline inspection: 360° vision with 6 cameras, IMU + odometry navigation, avionics-style HUD with a 3D scene, and YOLOv8 detection of 7 structural fault types.",
+    p_ductos:"Robotic platform for internal pipeline inspection: 360° vision with 6 cameras, IMU + odometry navigation, HUD with a 3D scene, and YOLOv8 detection of 7 structural fault types.",
     n_priv:"Code owned by the client — happy to discuss the architecture.",
     r_intisat:"Satellite mission · Payload lead",
     p_intisat:"UHF communications payload for the international APSCO competition. Ground station with real-time telemetry and a custom interface.",
@@ -388,16 +375,12 @@ const I18N = {
     p_trade:"Python market-data pipeline with machine learning models for trading signals.",
     r_jumper:"In development",
     p_jumper:"Adaptive cloud service on Azure + AWS, part of a product not yet announced.",
-    n_soon:"Details coming soon.", see_repo:"View repository →",
+    n_soon:"Details coming soon.", see_repo:"View repository",
     sec_sk_k:"Capabilities", sec_skills:"Skills",
     k1_t:"Embedded & hardware", k2_t:"RF & satellite", k2_d:"UHF links · link budget · telemetry · antennas · PLL / TCXO",
     k3_t:"Robotics", k3_d:"ROS2 · Gazebo · CoppeliaSim · kinematics · PID control",
     k4_t:"Languages", k5_t:"Web", k6_t:"AI & vision", k6_d:"YOLOv8 · neural networks · 3D reconstruction · OpenCV · sensor fusion",
-    k7_t:"Cloud & data", k8_t:"Mechanical design",
-    sec_cv_k:"Documents", sec_cv:"Résumé",
-    cv1_t:"Complete profile", cv1_d:"Mechatronics, space and fullstack: the panoramic view.",
-    cv2_t:"Electronic design", cv2_d:"PCBs, embedded systems, RF, and satellite communications.",
-    cv3_t:"Software development", cv3_d:"Fullstack: React, Node, Django, AWS, and scientific Python.",
+    k7_t:"Cloud & data",
     f_talk:"Shall we talk?"
   },
   es: {}
