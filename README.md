@@ -2,7 +2,7 @@
 
 Portafolio personal de **José Fabián Sifuentes Gálvez** — Ingeniero Mecatrónico (PUCP).
 
-🌐 **Live:** https://noonejf.github.io
+**Live:** https://noonejf.github.io
 
 Sitio estático (HTML/CSS/JS puro, sin frameworks ni build). Bilingüe ES/EN con
 toggle persistente. Los CVs en PDF se generan con LaTeX (tectonic) desde
